@@ -176,3 +176,69 @@ gzip -d data10.gz
 cat data10
 
 The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+**Level 13 - 14**
+The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+
+bandit13 has a file called sshkey.private, this is the id_rsa key for bandit14. ssh into bandit14 using this key.
+
+### commands: ###
+
+	ssh -i sshkey.private bandit14@localhost
+
+	cat /etc/bandit_pass/bandit14
+
+Password: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+
+**Level 14 - 15**
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+
+### commands: ###
+	
+	echo "4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e" | nc localhost 30000 localhost.
+
+**Level 15 - 16**
+The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.
+
+Helpful note: Getting “HEARTBEATING” and “Read R BLOCK”? Use -ign_eof and read the “CONNECTED COMMANDS” section in the manpage. Next to ‘R’ and ‘Q’, the ‘B’ command also works in this version of that command…
+
+### commands ###
+
+	openssl s_client -connect localhost:30001
+
+enter password for task 14 and press enter.
+
+Password: cluFn7wTiGryunymYOu4RcffSxQluehd
+
+**Level 16 - 17**
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. 
+
+First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
+
+![Screen Shot 2022-07-19 at 21.53.44.png](:/8b8b9637059c49bcb940b2ac9e2e492e)
+
+### commands ###
+
+	openssl s_client -connect localhost:31790
+
+enter password for task 16 and press enter.
+	
+![Screen Shot 2022-07-19 at 21.55.41.png](:/54f6710a551246f3ba6aab9afa6b2b53)
+
+I then exited and saved the id_rsa into a file. Changed its permission and logged in to bandit17
+
+### commands ###
+
+	ssh -i id_rsa_bandit17 bandit17@bandit.labs.overthewire.org -p 2220
+
+
+**Level 17 - 18**
+There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+
+NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19
+
+### commands ###
+
+	diff passwords.old passwords.new 
+
+Password: kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
