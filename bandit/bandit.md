@@ -222,7 +222,7 @@ The credentials for the next level can be retrieved by submitting the password o
 
 First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
 
-![Screen Shot 2022-07-19 at 21.53.44.png](:/8b8b9637059c49bcb940b2ac9e2e492e)
+![nmap scan](https://github.com/joaconstrictor/OverTheWire/blob/main/bandit/images/nmapscan.png)
 
 ### commands: ###
 
@@ -230,7 +230,7 @@ First find out which of these ports have a server listening on them. Then find o
 
 enter password for task 16 and press enter.
 	
-![Screen Shot 2022-07-19 at 21.55.41.png](:/54f6710a551246f3ba6aab9afa6b2b53)
+![id_rsa](https://github.com/joaconstrictor/OverTheWire/blob/main/bandit/images/id_rsa.png)
 
 I then exited and saved the id_rsa into a file. Changed its permission and logged in to bandit17
 
