@@ -136,7 +136,9 @@ password: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 **Level 11 - 12**
 The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
 
-cat data.txt
+#### command: ####
+
+    cat data.txt
 
 Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
 
@@ -147,33 +149,38 @@ The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 **Level 12 - 13**
 The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
 
-cat data.txt | xxd -r > data2
+Used xxd command to convert a hex dump back to its original binary form. Then use "file" command to see the file type and then copied that file to a new file with the proper extension, repeatedly until the data in the file is ASCII text. 
 
-cp data2 data3.gz
-gzip -d data3.gz
 
-cp data3 data4.bz
-bzip2 -d data4.bz
+#### commands: ####
 
-cp data4 data5.gz
-gzip -d data5.gz
+    cat data.txt | xxd -r > data2
 
-cp data5 data6.tar
-tar -xf data6.tar
+    cp data2 data3.gz
+    gzip -d data3.gz
 
-cp data5.bin data7.tar
-tar -xf data7.tar
+    cp data3 data4.bz
+    bzip2 -d data4.bz
 
-cp data6.bin data8.bz
-bzip2 -d data8.bz
+    cp data4 data5.gz
+    gzip -d data5.gz
 
-cp data8 data9.tar
-tar -xf data9.tar
+    cp data5 data6.tar
+    tar -xf data6.tar
 
-cp data8.bin data10.gz
-gzip -d data10.gz
+    cp data5.bin data7.tar
+    tar -xf data7.tar
 
-cat data10
+    cp data6.bin data8.bz
+    bzip2 -d data8.bz
+
+    cp data8 data9.tar
+    tar -xf data9.tar
+
+    cp data8.bin data10.gz
+    gzip -d data10.gz
+
+    cat data10
 
 The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 
