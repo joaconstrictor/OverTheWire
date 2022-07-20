@@ -224,7 +224,7 @@ First find out which of these ports have a server listening on them. Then find o
 
 ![Screen Shot 2022-07-19 at 21.53.44.png](:/8b8b9637059c49bcb940b2ac9e2e492e)
 
-### commands ###
+### commands: ###
 
 	openssl s_client -connect localhost:31790
 
@@ -234,7 +234,7 @@ enter password for task 16 and press enter.
 
 I then exited and saved the id_rsa into a file. Changed its permission and logged in to bandit17
 
-### commands ###
+### commands: ###
 
 	ssh -i id_rsa_bandit17 bandit17@bandit.labs.overthewire.org -p 2220
 
@@ -244,7 +244,7 @@ There are 2 files in the homedirectory: passwords.old and passwords.new. The pas
 
 NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19
 
-### commands ###
+### commands: ###
 
 	diff passwords.old passwords.new 
 
