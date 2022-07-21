@@ -249,3 +249,71 @@ NOTE: if you have solved this level and see ‘Byebye!’ when trying to log int
 	diff passwords.old passwords.new 
 
 Password: kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+
+**Level 18 - 19**
+The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
+
+### command: ###
+	
+	ssh -t  bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh  
+	
+Password: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+**Level 19 - 20**
+To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.
+
+### commands: ###
+
+	./bandit20-do ls /etc/bandit_pass
+	./bandit20-do cat /etc/bandit_pass/bandit20
+
+Password: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+**Level 20 - 21**
+There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+
+NOTE: Try connecting to your own network daemon to see if it works as you think
+
+### commands: ###
+ 
+ 	echo 'GbKksEFF4yrVs6il55v6gwY5aVje5f0j' | nc -lvp 2222 &
+
+	./suconnect 2222
+
+password: gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+
+![Screen Shot 2022-07-20 at 20.32.08.png](:/08a2050823fe4ccba39ef64bf2736496)
+
+
+**Level 21 - 22**
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+### commands: ###
+
+	cd /etc/cron.d
+	ls
+	cat cronjob_bandit22
+	cat /usr/bin/cronjob_bandit22.sh
+	cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+	
+Password: Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+
+**Level 22 - 23**
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+NOTE: Looking at shell scripts written by other people is a very useful skill. The script for this level is intentionally made easy to read. If you are having problems understanding what it does, try executing it to see the debug information it prints.
+
+### commands: ###
+
+	cd /etc/cron.d
+	cat cronjob_bandit23
+	cd /usr/bin/
+	cat cronjob_bandit23.sh 
+	
+![Screen Shot 2022-07-20 at 21.06.56.png](:/4417a97b586d4263a3bf352f3ec53556)
+	
+	myname=bandit23
+	echo I am user $myname | md5sum | cut -d ' ' -f 1
+	cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+
+Password: jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
