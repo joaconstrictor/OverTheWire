@@ -282,7 +282,7 @@ NOTE: Try connecting to your own network daemon to see if it works as you think
 
 password: gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
 
-![Screen Shot 2022-07-20 at 20.32.08.png](:/08a2050823fe4ccba39ef64bf2736496)
+![level20](https://github.com/joaconstrictor/OverTheWire/blob/main/bandit/images/level20.png)
 
 
 **Level 21 - 22**
@@ -310,7 +310,7 @@ NOTE: Looking at shell scripts written by other people is a very useful skill. T
 	cd /usr/bin/
 	cat cronjob_bandit23.sh 
 	
-![Screen Shot 2022-07-20 at 21.06.56.png](:/4417a97b586d4263a3bf352f3ec53556)
+![script](https://github.com/joaconstrictor/OverTheWire/blob/main/bandit/images/scriptlevel22.png)
 	
 	myname=bandit23
 	echo I am user $myname | md5sum | cut -d ' ' -f 1
